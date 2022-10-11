@@ -5,15 +5,17 @@ import TasksFilter from "../TasksFilter";
 import "./Footer.css";
 
 const Footer = ({ tasksCount, clearComplated, filterFunc, filterFlag }) => {
-  <footer className="footer">
-    <span className="todo-count">{tasksCount}items left</span>
+  return (
+    <footer className="footer">
+      <span className="todo-count">{tasksCount}items left</span>
 
-    <TasksFilter filterFunc={filterFunc} filterFlag={filterFlag} />
+      <TasksFilter filterFunc={filterFunc} filterFlag={filterFlag} />
 
-    <button onClick={clearComplated} className="clear-completed">
-      Clear completed
-    </button>
-  </footer>;
+      <button onClick={clearComplated} className="clear-completed">
+        Clear completed
+      </button>
+    </footer>
+  );
 };
 
 Footer.prototype = {
