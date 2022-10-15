@@ -10,9 +10,10 @@ const TasksFilter = ({ filterFunc, filterFlag }) => {
     <ul className="filters">
       {arrFilter.map((el) => (
         <li key={el}>
-          <button className={el === filterFlag ? "selected" : ""} onClick={() => filterFunc(el)}>
+          <input type="radio" id={el} onClick={() => filterFunc(el)} />
+          <label htmlFor={el} className={el === filterFlag ? "selected" : ""}>
             {el}
-          </button>
+          </label>
         </li>
       ))}
     </ul>
