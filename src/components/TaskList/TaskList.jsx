@@ -8,6 +8,7 @@ const TaskList = ({ tasks, onDeleted, onToggleCompleted, onToggleEditing, update
   const elements = tasks.map((el) => (
     <Task
       key={el.id}
+      id={el.id}
       description={el.description}
       completed={el.completed}
       editing={el.editing}

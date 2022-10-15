@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { formatDistanceToNow } from "date-fns";
+import classNames from "classnames";
 
 import "./Task.css";
 
@@ -42,28 +43,28 @@ export default class Task extends React.Component {
 
   render() {
     const { date } = this.state;
-    const { description, completed, editing } = this.props;
+    const { description, completed, editing, id } = this.props;
 
-    let classNames = "";
+    let styleEl = "";
     let change = false;
 
     if (completed) {
-      classNames += " completed";
+      styleEl = classNames(styleEl, "completed");
       change = true;
     }
 
     if (editing) {
-      classNames += " editing";
+      styleEl = classNames(styleEl, "editing");
     }
 
     const Edit = <input onKeyUp={this.keyUp} defaultValue={description} type="text" className="edit" />;
 
     return (
-      <li className={classNames}>
+      <li className={styleEl}>
         <div className="view">
-          <input defaultChecked={change} onClick={this.onToggleCompleted} className="toggle" type="checkbox" />
+          <input id={id} defaultChecked={change} onClick={this.onToggleCompleted} className="toggle" type="checkbox" />
 
-          <label>
+          <label htmlFor={id}>
             <span className="description">{description}</span>
             <span className="created">created {this.addTick(date)} ago</span>
           </label>
@@ -87,4 +88,5 @@ Task.propTypes = {
   completed: PropTypes.bool.isRequired,
   editing: PropTypes.bool.isRequired,
   time: PropTypes.instanceOf(Date).isRequired,
+  id: PropTypes.number.isRequired,
 };

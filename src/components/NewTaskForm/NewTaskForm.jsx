@@ -34,16 +34,20 @@ export default class NewTaskForm extends React.Component {
     const { description } = this.state;
 
     return (
-      <form className="header" onSubmit={this.onSubmit}>
+      <>
         <h1>todos</h1>
 
-        <input
-          onChange={this.updateDescription}
-          value={description}
-          className="new-todo"
-          placeholder="What needs to be done?"
-        />
-      </form>
+        <header className="header">
+          <form onSubmit={this.onSubmit}>
+            <input
+              onChange={this.updateDescription}
+              value={description}
+              className="new-todo"
+              placeholder="What needs to be done?"
+            />
+          </form>
+        </header>
+      </>
     );
   }
 }
